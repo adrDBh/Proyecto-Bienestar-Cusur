@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', '') }}</title>
     <link href="/css/app.css" rel="stylesheet">
     <script>
         window.Laravel = <?php echo json_encode([
@@ -26,7 +26,7 @@
                     </button>
 
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', '') }}
                     </a>
                 </div>
 
@@ -36,7 +36,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Inicia sesión</a></li>
+                            <!--<li><a href="{{ url('/login') }}">Inicia sesión</a></li>-->
                             <li><a href="{{ url('/register') }}">Registro</a></li>
                         @else
                             <li class="dropdown">
@@ -49,7 +49,7 @@
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
