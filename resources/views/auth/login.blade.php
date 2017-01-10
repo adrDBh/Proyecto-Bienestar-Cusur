@@ -9,13 +9,25 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <!--TODO Original email login form -->
+                        <!-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  -->
+                        <div class="form-group{{ $errors->has('UDG_Code') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
+                            <div class="col-md-6">
+                                <input id="UDG_Code" type="text" class="form-control" name="UDG_Code" value="{{ old('UDG_Code') }}" required autofocus>
+                                @if ($errors->has('UDG_Code'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('UDG_Code') }}</strong>
                                     </span>
                                 @endif
                             </div>
