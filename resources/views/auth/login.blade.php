@@ -8,34 +8,22 @@
                     <div class="panel-heading text-center">Ingresa tus datos de inicio de sesión</div>
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                            {{ csrf_field() }}
-                            <!--
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
+                        {{ csrf_field() }}
+                        <!-- Userdata input  -->
+                            <div class="form-group{{ $errors->has('User_data') ? ' has-error' : '' }}">
+                                <label for="User_data" class="col-md-4 control-label">Correo o código UDG</label>
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email"
-                                           value="{{ old('email') }}" required autofocus>
-                                    @if ($errors->has('email'))
+                                    <input id="User_data" type="text" class="form-control" name="User_data"
+                                           value="{{ old('User_data') }}" required autofocus>
+                                    @if ($errors->has('User_data'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('User_data') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            -->
-                            <div class="form-group{{ $errors->has('Login') ? ' has-error' : '' }}">
-                                <label for="Login" class="col-md-4 control-label">Correo o código UDG</label>
-                                <div class="col-md-6">
-                                    <input id="Login" type="text" class="form-control" name="Login"
-                                           value="{{ old('Login') }}" required autofocus>
-                                    @if ($errors->has('Login'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('Login') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
+                            <!-- / Userdata input  -->
 
-                            </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 <label for="password" class="col-md-4 control-label">Contraseña</label>
                                 <div class="col-md-6">

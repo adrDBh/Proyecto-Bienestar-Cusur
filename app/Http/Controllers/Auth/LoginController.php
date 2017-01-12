@@ -2,20 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-    protected $username = 'email';
-
-    public function redirectPath()
-    {
-        return '/home';
-    }
+    protected $redirectTo = '/home';
+    protected $username = 'UDG_Code';
 
     public function username()
     {
@@ -26,15 +21,21 @@ class LoginController extends Controller
     {
         // Validates if the given input is number-only or email
         $this->username =
-            filter_var($request->input('Login'),
+            filter_var($request->input('User_data'),
                 FILTER_VALIDATE_REGEXP,
                 array("options" => array("regexp" => "/^(\d)+$/"))) ? 'UDG_Code' : 'email';
 
-        // Validates login...
-        $this->validateLogin($request);
+        $rules = [
+            'User_data' => 'required',
+            'password' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+
 
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
+
             return $this->sendLockoutResponse($request);
         }
 
@@ -43,10 +44,11 @@ class LoginController extends Controller
         }
 
         $this->incrementLoginAttempts($request);
+
         return $this->sendFailedLoginResponse($request);
+
     }
 
-    protected $redirectTo = '/home';
 
     public function __construct()
     {
