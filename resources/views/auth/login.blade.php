@@ -9,8 +9,7 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-                        <!--TODO Original email login form -->
-                        <!-- <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
@@ -20,6 +19,7 @@
                                     </span>
                                 @endif
                             </div>
+<<<<<<< HEAD
                         </div>  -->
                         <div class="form-group{{ $errors->has('Login') ? ' has-error' : '' }}">
                             <label for="Login" class="col-md-4 control-label">Correo o código UDG</label>
@@ -31,6 +31,8 @@
                                     </span>
                                 @endif
                             </div>
+=======
+>>>>>>> parent of 9ec77a6... DB now has seeds, changes to front-end and still ongoing multiple-way user auth..
                         </div>
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Contraseña</label>
