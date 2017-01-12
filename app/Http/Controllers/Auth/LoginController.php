@@ -1,52 +1,50 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller{
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
+class LoginController extends Controller
+{
     use AuthenticatesUsers;
+    protected $username = 'email';
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    // Overrides. 
-    protected $redirectTo = '/home';
-    protected $username = 'UDG_Code';
-
-    public function handleLogin(Request $request){
-      // TODO: Handle login with either UDG control code or user email address...
-      echo Input::get('UDG_Code');
-    //  $field = filter_var(Input::get('UDG_Code'), FILTER_VALIDATE_EMAIL) ? 'email' : 'UDG_Code';
-    //  $request->merge([$field => Input::get('email')]);
-    //  $this->username = $field;
-    //  return $this->login($request);
+    public function redirectPath()
+    {
+        return '/home';
     }
 
-    // Overriding original username class
-    public function username(){
-      return $this->username;
+    public function username()
+    {
+        return $this->username;
     }
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
+    public function login(Request $request)
+    {
+        // Validates if the given input is number-only or email
+        $this->username =
+            filter_var($request->input('Login'),
+                FILTER_VALIDATE_REGEXP,
+                array("options" => array("regexp" => "/^(\d)+$/"))) ? 'UDG_Code' : 'email';
+
+        // Validates login...
+        $this->validateLogin($request);
+
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        $this->incrementLoginAttempts($request);
+        return $this->sendFailedLoginResponse($request);
+    }
+
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);

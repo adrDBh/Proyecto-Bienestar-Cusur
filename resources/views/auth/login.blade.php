@@ -21,13 +21,13 @@
                                 @endif
                             </div>
                         </div>  -->
-                        <div class="form-group{{ $errors->has('UDG_Code') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
+                        <div class="form-group{{ $errors->has('Login') ? ' has-error' : '' }}">
+                            <label for="Login" class="col-md-4 control-label">Correo o código UDG</label>
                             <div class="col-md-6">
-                                <input id="UDG_Code" type="text" class="form-control" name="UDG_Code" value="{{ old('UDG_Code') }}" required autofocus>
-                                @if ($errors->has('UDG_Code'))
+                                <input id="Login" type="text" class="form-control" name="Login" value="{{ old('Login') }}" required autofocus>
+                                @if ($errors->has('Login'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('UDG_Code') }}</strong>
+                                        <strong>{{ $errors->first('Login') }}</strong>
                                     </span>
                                 @endif
                             </div>
