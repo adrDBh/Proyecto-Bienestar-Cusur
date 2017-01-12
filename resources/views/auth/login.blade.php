@@ -1,73 +1,75 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading text-center">Ingresa tus datos de inicio de sesión</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">Ingresa tus datos de inicio de sesión</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                            {{ csrf_field() }}
+                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <label for="email" class="col-md-4 control-label">Correo o código UDG</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email"
+                                           value="{{ old('email') }}" required autofocus>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
+
                             </div>
-<<<<<<< HEAD
-                        </div>  -->
-                        <div class="form-group{{ $errors->has('Login') ? ' has-error' : '' }}">
-                            <label for="Login" class="col-md-4 control-label">Correo o código UDG</label>
-                            <div class="col-md-6">
-                                <input id="Login" type="text" class="form-control" name="Login" value="{{ old('Login') }}" required autofocus>
-                                @if ($errors->has('Login'))
-                                    <span class="help-block">
+                            -->
+                            <div class="form-group{{ $errors->has('Login') ? ' has-error' : '' }}">
+                                <label for="Login" class="col-md-4 control-label">Correo o código UDG</label>
+                                <div class="col-md-6">
+                                    <input id="Login" type="text" class="form-control" name="Login"
+                                           value="{{ old('Login') }}" required autofocus>
+                                    @if ($errors->has('Login'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('Login') }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
+
                             </div>
-=======
->>>>>>> parent of 9ec77a6... DB now has seeds, changes to front-end and still ongoing multiple-way user auth..
-                        </div>
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Contraseña</label>
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                <label for="password" class="col-md-4 control-label">Contraseña</label>
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    ¿Olvidaste tu contraseña?
-                                </a>
-                                    </label>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-5">
-                                <button type="submit" class="btn btn-primary">
-                                    Iniciar sesión
-                                </button>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <a class="btn btn-link" href="{{ url('/password/reset') }}">
+                                                ¿Olvidaste tu contraseña?
+                                            </a>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-5">
+                                    <button type="submit" class="btn btn-primary">
+                                        Iniciar sesión
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection

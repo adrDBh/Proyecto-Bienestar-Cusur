@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-<<<<<<< HEAD
+
 use Illuminate\Http\Request;
-=======
->>>>>>> parent of 9ec77a6... DB now has seeds, changes to front-end and still ongoing multiple-way user auth..
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -19,7 +17,6 @@ class LoginController extends Controller
         return '/home';
     }
 
-<<<<<<< HEAD
     public function username()
     {
         return $this->username;
@@ -49,20 +46,8 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-=======
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
->>>>>>> parent of 9ec77a6... DB now has seeds, changes to front-end and still ongoing multiple-way user auth..
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
