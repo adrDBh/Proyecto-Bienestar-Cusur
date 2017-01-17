@@ -5,53 +5,42 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
+
     use AuthenticatesUsers;
+
     protected $redirectTo = '/home';
-    protected $username = 'UDG_Code';
-
-    public function username()
-    {
-        return $this->username;
-    }
-
-    public function login(Request $request)
-    {
-        // Validates if the given input is number-only or email
-        $this->username =
-            filter_var($request->input('User_data'),
-                FILTER_VALIDATE_REGEXP,
-                array("options" => array("regexp" => "/^(\d)+$/"))) ? 'UDG_Code' : 'email';
-
-        $rules = [
-            'User_data' => 'required',
-            'password' => 'required',
-        ];
-
-        $this->validate($request, $rules);
-
-
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if ($this->attemptLogin($request)) {
-            return $this->sendLoginResponse($request);
-        }
-
-        $this->incrementLoginAttempts($request);
-
-        return $this->sendFailedLoginResponse($request);
-
-    }
 
 
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'login' => 'required',
+            'password' => 'required',
+        ]);
+
+        $login_type = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL)
+            ? 'email'
+            : 'UDG_Code';
+
+        $request->merge([
+            $login_type => $request->input('login')
+        ]);
+
+        if (Auth::attempt($request->only($login_type, 'password'))) {
+            return redirect()->intended($this->redirectPath());
+        }
+
+        return redirect()->back()->withInput()->withErrors(['login' => 'Datos de inicio de sesión incorrectos.',]);
+    }
+
 }
