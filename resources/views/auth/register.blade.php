@@ -25,6 +25,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                                <label for="name" class="col-md-4 control-label">Rol dentro de CUSur</label>
+
+                                <div class="col-md-6">
+                                <!-- <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>-->
+                                    <select class="form-control" name="role">
+                                        <option value="value1" selected disabled>Selecciona un valor</option>
+                                        <option value="value2">Value 1</option>
+                                        <option value="value3">Value 2</option>
+                                    </select>
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                 <label for="email" class="col-md-4 control-label">Correo electrónico</label>
 
