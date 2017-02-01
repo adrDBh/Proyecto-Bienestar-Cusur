@@ -16,8 +16,6 @@ class RegisterController extends Controller
 
     public function __construct()
     {
-        # TODO
-        #$this->enum_values = General::getEnumValues('users', 'role');
         $this->middleware('guest');
     }
 
@@ -45,7 +43,6 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'UDG_Code' => 'required|min:7|max:9|unique:users',
-            'role' => 'required',
             'password' => 'required|min:6|confirmed',
         ], $this->messages);
     }
@@ -56,7 +53,6 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'UDG_Code' => $data['UDG_Code'],
-            'role' => $data['#VALUE'],
             'password' => bcrypt($data['password']),
         ]);
     }
