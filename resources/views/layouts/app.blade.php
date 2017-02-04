@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/font-awesome.css" rel="stylesheet">
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -36,7 +38,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                Rol | {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
@@ -56,7 +58,17 @@
     <section>
       <div class="container-fluid">
         <div class="row">
-          @yield('content')
+        <div class="col-md-2">
+          @include('layouts.sidebar-menu')
+        </div>
+        <div class="col-md-10">
+          <div class="panel panel-default">
+              <div class="panel-heading"><i class="fa fa-home"></i> TODO ROUTE PATH</div>
+              <div class="panel-body">
+                @yield('content')
+                </div>
+          </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,24 +1,54 @@
-<!-- Inherits frmo partial layout 'layouts' -->
+<!-- Inherits from partial layout 'layouts' -->
 @extends('layouts.app')
 <!-- Inherited layout -->
 @section('content')
+              <div class="container-fluid">
+              {{-- FIRST ROW --}}
+              <div class="row">
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
 
-    <div class="col-md-4">
-        @include('layouts.sidebar-menu')
-    </div>
-    <div class="col-md-8">
-        {{-- TODO
-        @role('Registrado')
-        <p>No tienes acceso al panel administrativo porque tu cuenta no ha sido activada aún, contacta a el
-            administrador</p>
-        @endrole
-        --}}
+                </div>
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
 
-        {{--@permission('access-panel')--}}
-        <div class="panel panel-default">
-            <div class="panel-heading">Dashboard</div>
-            <div class="panel-body">Iniciaste sesión.</div>
-        </div>
-    </div>
-    {{-- @endpermission --}}
+                </div>
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
+
+                </div>
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
+
+                </div>
+                <div class="col-sm-4">
+                      <a href="#" class="thumbnail">
+                        <div class="frontpage_square">
+                      <img src="" class="img img-responsive full-width"/></div></a>
+                    <center><a href="#" class="btn btn-large btn-primary text-center">Some url</a></center><br>
+
+                </div>
+              </div>
+              </div>
 @endsection

@@ -9,6 +9,7 @@ class CreatePermissions extends Migration
     public function up()
     {
         # TODO
+
     }
 
     public function down()

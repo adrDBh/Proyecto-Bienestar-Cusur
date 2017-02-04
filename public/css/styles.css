@@ -1,0 +1,18 @@
+.frontpage_square{
+position:relative;
+overflow:hidden;
+padding-bottom:100%;
+}
+.frontpage_square img{
+position:absolute;
+}
+.sidebar-list{
+  list-style: none;
+}
+.sidebar{
+  background: red;
+}
+
+.panel-group{
+  margin-bottom: 10px;
+}
