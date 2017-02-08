@@ -1,10 +1,12 @@
 <?php
 Route::get('/','HomeController@index');
 Auth::routes();
-Route::get('nursery', 'NurseryController@show');
-Route::get('medics', 'MedicsController@show');
-Route::get('slpce', 'SlpceController@show');
-Route::get('nutriology', 'NutriologyController@show');
-Route::get('laboratory', 'LabsController@show');
-Route::get('reports', 'ReportsController@show');
+// RESTful routes
+Route::resource('nursery','NurseryController');
+Route::resource('medics','MedicsController');
+Route::resource('slpce','SlpceController');
+Route::resource('nutriology','NutriologyController');
+Route::resource('laboratory','LabsController');
+Route::resource('reports','ReportsController');
+// Testing controller
 Route::get('test', 'testController@action');
