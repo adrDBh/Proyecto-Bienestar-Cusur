@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNurseryCapture;
+use App\Models\Patient;
+use App\Models\VitalSign;
 use Illuminate\Http\Request;
 
 class NurseryController extends Controller
@@ -14,7 +16,8 @@ class NurseryController extends Controller
      */
     public function index()
     {
-        return view('nursery.index');
+        $records = Patient::all();
+        return view('nursery.index', compact('records'));
     }
 
     /**
@@ -24,7 +27,7 @@ class NurseryController extends Controller
      */
     public function create()
     {
-        return 'TODO';
+        return view('nursery.create');
     }
 
     /**
@@ -35,7 +38,25 @@ class NurseryController extends Controller
      */
     public function store(StoreNurseryCapture $request)
     {
-        return dd($request->all());
+
+        // Filling out the partially
+        $patient_data = new Patient();
+        $patient_data->first_name = $request->get('first_name');
+        $patient_data->first_lastname = $request->get('first_lastname');
+        $patient_data->second_lastname = $request->get('second_lastname');
+        //Saving new patient
+        $patient_data->save();
+
+        // Filling out VitalSigns
+        $vs_data = new VitalSign();
+        $vs_data->mmHG = $request->get('mmHG');
+        $vs_data->FC = $request->get('FC');
+        $vs_data->FR = $request->get('FR');
+        $vs_data->Temp = $request->get('Temp');
+        $vs_data->patient_id = $patient_data->id;
+        // Saving new VitalSigns
+        $vs_data->save();
+        return redirect('nursery');
     }
 
     /**

@@ -18,15 +18,15 @@ class CreatePatientsTable extends Migration
             // Nombre
             $table->string('first_name');
             // Nombre intermedio
-            $table->string('mid_name');
+            $table->string('first_lastname');
             // Apellido paterno
-            $table->string('last_name');
+            $table->string('second_lastname');
             // Código de control UDG
-            $table->string('code')->unique()->nullable();
+            $table->string('controll_code')->unique()->nullable();
             // Estado civil
-            $table->enum('civil_state', ['Soltero','Casado','Divorciado','Unión libre','Viudo'])->nullable();
+            $table->enum('civil_state', ['Soltero', 'Casado', 'Divorciado', 'Unión libre', 'Viudo'])->nullable();
             // Genero
-            $table->enum('gender', ['Masculino','Femenino'])->nullable();
+            $table->enum('gender', ['Masculino', 'Femenino'])->nullable();
             // Fecha de nacimiento
             $table->date('birth_date')->nullable();
             // Dependientes económicos
