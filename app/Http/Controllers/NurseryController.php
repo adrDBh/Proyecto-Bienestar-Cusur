@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNurseryCapture;
 use App\Models\Patient;
-use App\Models\VitalSign;
+use App\Models\VitalSigns;
 use Illuminate\Http\Request;
 
 class NurseryController extends Controller
@@ -38,8 +38,7 @@ class NurseryController extends Controller
      */
     public function store(StoreNurseryCapture $request)
     {
-
-        // Filling out the partially
+        // Filling out the patient partially
         $patient_data = new Patient();
         $patient_data->first_name = $request->get('first_name');
         $patient_data->first_lastname = $request->get('first_lastname');
@@ -48,7 +47,7 @@ class NurseryController extends Controller
         $patient_data->save();
 
         // Filling out VitalSigns
-        $vs_data = new VitalSign();
+        $vs_data = new VitalSigns();
         $vs_data->mmHG = $request->get('mmHG');
         $vs_data->FC = $request->get('FC');
         $vs_data->FR = $request->get('FR');

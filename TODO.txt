@@ -1,7 +1,12 @@
+=============== GENERAL ===============
 = Fix panel-heading paths to show correctly
-= Use 'Active' plugin to show current navigation page (Front-end)
-= Create models and migrations to save submited forms (PENDING: Nursery)
 = Show current user's role in navbar
 = Automatically Asign a 'Registered' role to any newly registered user
 = Once a good part of front-end is finished assign view permissions
-= Change 'some url' button's text to correspondent module's name
+
+=============== Nutriology ===============
+= Finish form front-end
+= Create models and database tables
+= Validate inputs from form
+
+

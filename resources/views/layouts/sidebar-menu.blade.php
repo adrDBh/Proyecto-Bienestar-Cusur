@@ -8,12 +8,24 @@ $LabsURL = url('labs/create');
 $ReportsURL = url('reports/create');
 ?>
 <div class="list-group sidebar-list">
-    <li><a href="{{url('/')}}" class="list-group-item active text-center"><i class="fa fa-home"></i> Inicio</a></li>
-    <li><a href="{{ $NurseryURL }}" class="list-group-item text-center"><i class="fa fa-stethoscope"></i> Enfermería</a>
+    <li><a href="{{url('/')}}" class="{{ active('/') }} list-group-item text-center"><i class="fa fa-home"></i>
+            Inicio</a></li>
+    <li><a href="{{ $NurseryURL }}" class="{{ active('nursery.*') }} list-group-item text-center"><i
+                    class="fa fa-stethoscope"></i> Enfermería</a>
     </li>
-    <li><a href="{{ $MedicsURL }}" class="list-group-item text-center"><i class="fa fa-user-md"></i> Médicos</a></li>
-    <li><a href="{{ $SlpceURL }}" class="list-group-item text-center"><i class="fa fa-ambulance"></i> SLPCE</a></li>
-    <li><a href="{{ $NutURL }}" class="list-group-item text-center"><i class="fa fa-cutlery"></i> Nutriología</a></li>
-    <li><a href="{{ $LabsURL }}" class="list-group-item text-center"><i class="fa fa-flask"></i> Laboratoriales</a></li>
-    <li><a href="{{ $ReportsURL }}" class="list-group-item text-center"><i class="fa fa-folder"></i> Reportes</a></li>
+    <li><a href="{{ $MedicsURL }}" class="{{ active('medics.*') }} list-group-item text-center"><i
+                    class="fa fa-user-md"></i>
+            Médicos</a></li>
+    <li><a href="{{ $SlpceURL }}" class="{{ active('slpce.*') }} list-group-item text-center"><i
+                    class="fa fa-ambulance"></i>
+            SLPCE</a></li>
+    <li><a href="{{ $NutURL }}" class="{{ active('nutriology.*') }} list-group-item text-center"><i
+                    class="fa fa-cutlery"></i>
+            Nutriología</a></li>
+    <li><a href="{{ $LabsURL }}" class="{{ active('labs.*') }} list-group-item text-center"><i
+                    class="fa fa-flask"></i>
+            Laboratoriales</a></li>
+    <li><a href="{{ $ReportsURL }}" class="{{ active('reports.*') }} list-group-item text-center"><i
+                    class="fa fa-folder"></i>
+            Reportes</a></li>
 </div>

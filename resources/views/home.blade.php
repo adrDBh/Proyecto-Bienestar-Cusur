@@ -19,7 +19,8 @@
                     <div class="frontpage_square">
                         <img src="{{asset('img/no-img.png')}}" class="img img-responsive full-width"/></div>
                 </a>
-                <center><a href="{{ $NurseryURL }}" class="btn btn-large btn-primary text-center">Enfermería</a>
+                <center><a href="{{ $NurseryURL }}"
+                           class="btn btn-large btn-primary text-center">Enfermería</a>
                 </center>
                 <br>
             </div>

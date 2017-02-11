@@ -14,34 +14,6 @@
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
-    <?php
-    # WORKAROUND FOR GETTING CURRENT MODULE ROUTE AND ACTION
-    $new = 'Capturar nuevo';
-    $index = 'Registros';
-    $forward = ' > ';
-    //////////////////////////
-    $dashboard = 'Inicio ';
-    $nurse = 'Enfermería ';
-    $medic = 'Médicos ';
-    $slpce = 'SLPCE ';
-    $nuts = 'Nutriología ';
-    $labs = 'Laboratoriales ';
-    $reports = 'Reportes ';
-    ///////////////////////////
-    $actions = ['/' => $dashboard,
-        'nursery' => $dashboard . $forward . $nurse . $forward . $index,
-        'nursery/create' => $dashboard . $forward . $nurse . $forward . $new,
-        'medics' => $dashboard . $forward . $medic . $forward . $index,
-        'medics/create' => $dashboard . $forward . $medic . $forward . $new,
-        'slpce' => $dashboard . $forward . $slpce . $forward . $index,
-        'slpce/create' => $dashboard . $forward . $slpce . $forward . $new,
-        'nutriology' => $dashboard . $forward . $nuts . $forward . $index,
-        'nutriology/create' => $dashboard . $forward . $nuts . $forward . $new,
-        'labs' => $dashboard . $forward . $labs . $forward . $index,
-        'labs/create' => $dashboard . $forward . $labs . $forward . $new,
-        'reports' => $dashboard . $forward . $reports . $forward . $index,
-        'reports/create' => $dashboard . $forward . $reports . $forward . $new,
-    ]; ?>
 </head>
 <body>
 <div id="app">
@@ -86,22 +58,7 @@
         </div>
     </nav>
     <section>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2">
-                    @include('layouts.sidebar-menu')
-                </div>
-                <div class="col-md-10">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><i
-                                    class="fa fa-home"></i> {{ $actions[Route::getCurrentRoute()->getPath()] }}</div>
-                        <div class="panel-body">
-                            @yield('content')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @yield('content')
     </section>
 </div>
 <script src="/js/app.js"></script>

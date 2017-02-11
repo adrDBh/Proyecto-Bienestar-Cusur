@@ -20,7 +20,6 @@ class StoreNurseryCapture extends FormRequest
     {
         // Required form fields
         return [
-            'mmHG' => 'numeric',
             'FC' => 'numeric',
             'FR' => 'numeric',
             'Temp' => 'numeric|between:35,42'
