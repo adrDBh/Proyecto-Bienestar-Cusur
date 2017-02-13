@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class UsersSeeder extends Seeder
@@ -11,6 +13,8 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 5)->create();
+        factory(User::class, 5)->create()->each(function ($i) {
+            $i->attachRole(Role::where('name', '=', 'registered')->first());
+        });
     }
 }

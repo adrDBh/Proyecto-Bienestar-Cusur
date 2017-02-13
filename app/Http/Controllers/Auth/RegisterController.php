@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Libraries\General;
 use App\Models\User;
+use App\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -19,8 +19,6 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    protected $enum_values;
-
 
     protected $messages = [
         'required' => 'Este campo no puede estar vacío.',
@@ -32,7 +30,6 @@ class RegisterController extends Controller
         'UDG_Code.unique' => 'El código UDG proporcionado ya está registrado.',
         'UDG_Code.min' => 'El código UDG debe tener mínimo 7 caracteres.',
         'password.min' => 'La contraseña debe tener mínimo 6 caracteres.',
-        'name.max' => 'El nombre no puede ser más largo que 255 caracteres.',
         'UDG_Code.max' => 'El código UDG no debe tener más de 9 caracteres.',
         'password.confirmed' => 'Las contraseñas no coinciden.'
     ];
@@ -40,7 +37,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'UDG_Code' => 'required|min:7|max:9|unique:users',
             'password' => 'required|min:6|confirmed',
@@ -49,12 +47,16 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'UDG_Code' => $data['UDG_Code'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->attachRole(Role::where('name', '=', 'registered')->first());
+        return $user;
     }
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 Auth::routes();
+// Protected routes
 Route::group(['middleware' => 'auth'], function () {
     // Main dashboard
     Route::get('/', 'HomeController@index');

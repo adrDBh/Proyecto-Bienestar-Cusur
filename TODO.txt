@@ -7,6 +7,5 @@
 =============== Nutriology ===============
 = Finish form front-end
 = Create models and database tables
-= Validate inputs from form
-
+= Validate and calculate fields automatically
 

@@ -4,7 +4,7 @@ $NurseryURL = url('nursery/create');
 $MedicsURL = url('medics/create');
 $SlpceURL = url('slpce/create');
 $NutURL = url('nutriology/create');
-$LabsURL = url('labs/create');
+$LabsURL = url('laboratory/create');
 $ReportsURL = url('reports/create');
 ?>
 <div class="list-group sidebar-list">

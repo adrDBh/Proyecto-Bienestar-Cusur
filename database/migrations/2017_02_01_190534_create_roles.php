@@ -53,8 +53,9 @@ class CreateRoles extends Migration
         // Registered
         $registered = new Role();
         $registered->name = 'registered';
-        $registered->display_name = 'Registrado(Sin rol)';
+        $registered->display_name = 'Registrado (Sin rol)';
         $registered->description = 'Usuario sin ningún rol activo';
+        $registered->save();
     }
 
 

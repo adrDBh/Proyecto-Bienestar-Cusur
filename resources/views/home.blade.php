@@ -8,7 +8,7 @@
     $MedicsURL = url('medics/create');
     $SlpceURL = url('slpce/create');
     $NutURL = url('nutriology/create');
-    $LabsURL = url('labs/create');
+    $LabsURL = url('laboratory/create');
     $ReportsURL = url('reports/create');
     ?>
     <div class="container-fluid">
