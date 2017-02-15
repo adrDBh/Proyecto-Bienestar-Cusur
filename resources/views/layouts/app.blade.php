@@ -67,7 +67,9 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{ Auth::user()->roles[0]->display_name  }} | {{ Auth::user()->first_name}} <span class="caret"></span>
+                                {{-- #array index 0 because is a HasMany relationship and we only need the main role --}}
+                                {{ Auth::user()->roles[0]->display_name .' | '. Auth::user()->first_name}} <span
+                                        class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/logout') }}"
