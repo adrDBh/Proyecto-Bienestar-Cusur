@@ -10,12 +10,13 @@
 | database. Just tell the factory how a default model should look.
 |
 */
+use App\Models\User;
+use Faker\Generator;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(User::class, function (Generator $faker) {
     static $password;
-
     return [
         'first_name' => $faker->name,
         'last_name' => $faker->lastName,

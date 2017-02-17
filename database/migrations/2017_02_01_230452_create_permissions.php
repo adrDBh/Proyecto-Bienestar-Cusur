@@ -8,12 +8,14 @@ class CreatePermissions extends Migration
 {
     public function up()
     {
-        # TODO
+        # TBI: Until 90% of front-end is completed
+        # to ensure everything works correctly, before it is implemented.
 
     }
 
     public function down()
     {
-        # TODO
+        # TBI: Until 90% of front-end is completed
+        # to ensure everything works correctly, before it is implemented.
     }
 }

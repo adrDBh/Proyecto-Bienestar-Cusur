@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class NutriologyController extends Controller
@@ -13,7 +14,8 @@ class NutriologyController extends Controller
      */
     public function index()
     {
-        return 'WIP';
+        $records = Patient::all();
+        return view('nutriology.index', compact('records'));
     }
 
     /**
@@ -34,7 +36,10 @@ class NutriologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get the data validate it and and fill the new entry...
+        # Output debug
+        return dd($request);
+        //return redirect('nutriology');
     }
 
     /**

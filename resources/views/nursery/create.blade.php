@@ -1,6 +1,6 @@
-<!-- Inherits from partial layout 'layouts' -->
+{{-- Inherits from partial layout 'layouts' --}}
 @extends('layouts.app')
-<!-- Inherited layout -->
+{{-- Inherited layout --}}
 @section('content')
 
     <h2 class="text-center">Signos vitales</h2>

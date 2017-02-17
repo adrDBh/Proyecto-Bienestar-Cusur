@@ -8,12 +8,18 @@ class CreateRoles extends Migration
 
     public function up()
     {
+        // Could also be...
+        # Role::create([
+        # 'foo' => 'bar'
+        # ])->save();
+
         // Administrator
         $admin = new Role();
         $admin->name = 'admin';
         $admin->display_name = 'Administrador';
         $admin->description = 'Usuario con el rol \'Administrativo\'';
         $admin->save();
+
 
         // Nurse
         $nurse = new Role();
@@ -61,11 +67,12 @@ class CreateRoles extends Migration
 
     public function down()
     {
-        // Betting there is a more appropriate way to do this..
-        // But this is just a temporal hack..
+        // I bet there is a more appropriate way to do this..
+        // But this is just a temporal work-around..
         Eloquent::unguard();
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Role::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        Eloquent::reguard();
     }
 }

@@ -67,7 +67,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
-                                {{-- #array index 0 because is a HasMany relationship and we only need the main role --}}
+                                {{-- Array index 0 because is a HasMany relationship and we only need the 0/first role found --}}
                                 {{ Auth::user()->roles[0]->display_name .' | '. Auth::user()->first_name}} <span
                                         class="caret"></span>
                             </a>

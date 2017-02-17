@@ -4,7 +4,8 @@
 @section('content')
     <h2 class="text-center">Evaluación antropométrica</h2>
     {!! Form::open(['action' => 'NutriologyController@store']) !!}
-    <!-- TODO: There is no use having all the inputs from the mockup, since some of them can be automatically calculated -->
+    {{-- TODO: There is no use having all the inputs from the mockup, since some of them can be automatically calculated
+     But.. Ajax, Angular, JS, Jquery? --}}
     <div class="container-fluid">
         <div class="row">
             <h3 class="text-center text-info"><i>Primera parte del cuestionario</i></h3>
@@ -65,7 +66,7 @@
                     <div class="input-group">
                         <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
                         {{
-                        Form::select('weight_category', [ 1 => 'Peso bajo', 2 => 'Peso normal', 3 => 'Sobrepeso'], null, ['class' => 'form-control','placeholder' => 'Elije una opción'])
+                        Form::select('weight_category', [ 'Peso bajo' => 'Peso bajo', 'Peso normal' => 'Peso normal', 'Sobrepeso' => 'Sobrepeso'], null, ['class' => 'form-control','placeholder' => 'Elije una opción'])
                         }}
                     </div>
                     @if ($errors->has('weight_category'))
@@ -113,7 +114,7 @@
                     <div class="input-group">
                         <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
                         {{
-                        form::select('waist_danger', [1 => 'Sí', 2 => 'No'],
+                        form::select('waist_danger', [ 1 => 'Sí', 0 => 'No'],
                         null,
                         ['placeholder' => 'Elije una opción', 'class' => 'form-control', 'required'])
                         }}
@@ -248,7 +249,7 @@
                     <div class="input-group">
                         <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
                         {{
-                        form::select('mass_distribution', [],
+                        form::select('mass_distribution', ['Androide' => 'Androide', 'Prueba' => 'Prueba'],
                         null,
                         ['placeholder' => 'Elije una opción', 'class' => 'form-control', 'required'])
                         }}
@@ -438,12 +439,15 @@
              </span>
                     @endif
                 </div>
-                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-offset-1 col-md-11">
                 <div class="form-group">
                     <label class="control-label" for="is_active">¿Realiza actividad física?</label>
                     <div class="input-group">
-                        {{Form::radio('is_active','Sí')}}Sí
-                        {{Form::radio('is_active','No')}}No
+                        {{Form::radio('is_active',1)}} Sí
+                        {{Form::radio('is_active',0)}} No
                     </div>
                     @if ($errors->has('is_active'))
                         <span class="text-danger">
@@ -453,19 +457,83 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="intensity">Intensidad</label>
+                    <label class="control-label" for="exercise_intensity">Intensidad</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
                         {{
-                        form::select('intensity', [1 => 'Leve', 2 => 'Moderada', 3 => 'Mucha'],
+                        form::select('exercise_intensity', [1 => 'Leve', 2 => 'Moderada', 3 => 'Mucha'],
                         null,
-                        ['placeholder' => 'Elije una opción', 'class' => 'form-control', 'required'])
+                        ['placeholder' => 'Elije una opción', 'class' => 'form-control'])
                         }}
                     </div>
-                    @if ($errors->has('intensity'))
+                    @if ($errors->has('exercise_intensity'))
                         <span class="text-danger">
                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                <strong>{{ $errors->first('intensity') }}</strong>
+                <strong>{{ $errors->first('exercise_intensity') }}</strong>
+             </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="does_exercise">¿Realiza ejercicio?</label>
+                    <div class="input-group">
+                        {{Form::radio('does_exercise',1)}} Sí
+                        {{Form::radio('does_exercise',0)}} No
+                    </div>
+                    @if ($errors->has('does_exercise'))
+                        <span class="text-danger">
+               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <strong>{{ $errors->first('does_exercise') }}</strong>
+             </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="exercise_type">Tipo de ejercicio</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
+                        {{
+                        Form::text('exercise_type',
+                        null,
+                        ['placeholder' => 'Ingresa el tipo de ejercicio que realiza el paciente', 'class' => 'form-control'])
+                        }}
+                    </div>
+                    @if ($errors->has('exercise_type'))
+                        <span class="text-danger">
+               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <strong>{{ $errors->first('exercise_type') }}</strong>
+             </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="exercise_frecuency">Frecuencia</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
+                        {{
+                        Form::text('exercise_frecuency',
+                        null,
+                        ['placeholder' => 'Ingresa la frecuencia del ejercicio por semana del paciente', 'class' => 'form-control'])
+                        }}
+                    </div>
+                    @if ($errors->has('exercise_frecuency'))
+                        <span class="text-danger">
+               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <strong>{{ $errors->first('exercise_frecuency') }}</strong>
+             </span>
+                    @endif
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="exercise_duration">Duración por sesión</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="" aria-hidden="true"></i></div>
+                        {{
+                        Form::number('exercise_duration',
+                        null,
+                        ['placeholder' => 'Ingresa la duración de la sesión de ejercicio en minutos', 'class' => 'form-control' ])
+                        }}
+                    </div>
+                    @if ($errors->has('exercise_duration'))
+                        <span class="text-danger">
+               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <strong>{{ $errors->first('exercise_duration') }}</strong>
              </span>
                     @endif
                 </div>

@@ -1,4 +1,4 @@
-{{-- Inherits from partial layout 'layouts' --}}
+{{-- Inherits from partial layout 'app' --}}
 @extends('layouts.app')
 {{-- Inherited layout --}}
 @section('content')
@@ -6,8 +6,8 @@
     <br>
     @if(count($records) == 0)
         <h3 class="text-center">No hay registros aún..</h3>
-        {{-- FILL OUT TABLE  --}}
     @else
+        <!-- FILL OUT TABLE  -->
         <table class="table table-hover table-bordered">
             <thead>
             <tr>
@@ -25,6 +25,5 @@
             </tbody>
         </table>
     @endif
-    <a href="{{url('nutriology/create')}}" class="btn btn-success">Capturar nuevo</a>
-
+    <a href="{{url('laboratory/create')}}" class="btn btn-success">Capturar nuevo</a>
 @endsection

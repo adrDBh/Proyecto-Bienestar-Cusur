@@ -6,6 +6,7 @@ use App\Http\Requests\StoreNurseryCapture;
 use App\Models\Patient;
 use App\Models\VitalSigns;
 use Illuminate\Http\Request;
+use League\Flysystem\Exception;
 
 class NurseryController extends Controller
 {

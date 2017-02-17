@@ -5,7 +5,6 @@
 = Once a good part of front-end is finished assign view permissions
 
 =============== Nutriology ===============
-= Finish form front-end
-= Create models and database tables
 = Validate and calculate fields automatically
+= Check if there are no empty fields
 
